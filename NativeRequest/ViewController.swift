@@ -6,16 +6,40 @@
 //
 
 import UIKit
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return personajes.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:ri, for:indexPath)
+        let dict = personajes[indexPath.row]
+        cell.textLabel?.text = dict["name"] as? String ?? "Un personaje"
+        return cell
+    }
+}
 
 class ViewController: UIViewController {
-
+    var tablev = UITableView()
+    var personajes = [[ String : Any ]]()
+    let ri = "reuseId"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // esta llamada es para que se comience el monitoreo de Internet, y que cuando la vista ya se muestra, el estatus ya esté actualizado
         let _ = InternetStatus.instance
-        // Do any additional setup after loading the view.
+        // Establecer el frame para que la tabla ocupe todo el tamaño de la vista
+        /*
+        self.view.frame // propiedades "generales" respecto al superview
+        self.view.bounds // propiedades "especificas" respecto a su propia orientacion
+         */
+        tablev.frame = self.view.bounds
+        self.view.addSubview(tablev)
+        tablev.register(UITableViewCell.self, forCellReuseIdentifier:ri )
+        tablev.dataSource = self
+        tablev.delegate = self
     }
-
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if InternetStatus.instance.internetType == .none {
@@ -59,7 +83,11 @@ class ViewController: UIViewController {
                     do {
                         let json = try JSONSerialization.jsonObject(with:datos!, options: .fragmentsAllowed) as! [String : Any]
                         // TODO: presentar apropiadamente la info
-                    print (json)
+                        print (json)
+                        self.personajes = json["results"] as! [[String:Any]]
+                        DispatchQueue.main.async {
+                            self.tablev.reloadData()
+                        }
                     }
                     catch {
                         print ("algo salió mal al convertir el JSON \(error.localizedDescription)")
@@ -71,4 +99,6 @@ class ViewController: UIViewController {
         }
     }
 }
+
+
 
