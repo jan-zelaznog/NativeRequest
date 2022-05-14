@@ -13,6 +13,8 @@
 		3D075067282F36530052D449 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D075065282F36530052D449 /* Main.storyboard */; };
 		3D075069282F36550052D449 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D075068282F36550052D449 /* Assets.xcassets */; };
 		3D07506C282F36550052D449 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D07506A282F36550052D449 /* LaunchScreen.storyboard */; };
+		3D075074282F366A0052D449 /* InternetStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D075073282F366A0052D449 /* InternetStatus.swift */; };
+		3D075077282F39120052D449 /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D075076282F39120052D449 /* Network.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		3D075068282F36550052D449 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D07506B282F36550052D449 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D07506D282F36550052D449 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3D075073282F366A0052D449 /* InternetStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetStatus.swift; sourceTree = "<group>"; };
+		3D075076282F39120052D449 /* Network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Network.framework; path = System/Library/Frameworks/Network.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D075077282F39120052D449 /* Network.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,7 @@
 			children = (
 				3D07505E282F36530052D449 /* NativeRequest */,
 				3D07505D282F36530052D449 /* Products */,
+				3D075075282F39110052D449 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,8 +69,17 @@
 				3D075068282F36550052D449 /* Assets.xcassets */,
 				3D07506A282F36550052D449 /* LaunchScreen.storyboard */,
 				3D07506D282F36550052D449 /* Info.plist */,
+				3D075073282F366A0052D449 /* InternetStatus.swift */,
 			);
 			path = NativeRequest;
+			sourceTree = "<group>";
+		};
+		3D075075282F39110052D449 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3D075076282F39120052D449 /* Network.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D075064282F36530052D449 /* ViewController.swift in Sources */,
+				3D075074282F366A0052D449 /* InternetStatus.swift in Sources */,
 				3D075060282F36530052D449 /* AppDelegate.swift in Sources */,
 				3D075062282F36530052D449 /* SceneDelegate.swift in Sources */,
 			);
